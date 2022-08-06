@@ -1,8 +1,7 @@
 <div class="container-fluid">
-  <div class="row">
-    <div class="col bg-dark text-white">
-      <a href="#" class="navbar-brand"> Sklep sportowy </a>
-    </div>
+  <div class="d-flex justify-content-between align-items-center bg-dark p-2">
+    <a href="#" class="navbar-brand text-white"> Sklep sportowy </a>
+    <cart-summary></cart-summary>
   </div>
 
   <div class="row">
@@ -31,8 +30,11 @@
             {{ product.price | currency: "PLN":"symbol":undefined:"pl-PL" }}
           </span>
         </h4>
-        <div class="card-text bg-white p-1">
+        <div class="card-text bg-white p-1 d-flex justify-content-between align-items-center">
           {{ product.description }}
+          <button class="btn btn-success btn-sm" (click)="addProductToCart(product)">
+            Dodaj do koszyka
+          </button>
         </div>
       </div>
 

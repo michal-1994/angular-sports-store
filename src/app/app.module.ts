@@ -5,6 +5,8 @@ import { AppComponent } from './app.component';
 import { StoreModule } from './store/store.module';
 import { registerLocaleData } from '@angular/common';
 import localePL from '@angular/common/locales/pl';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 registerLocaleData(localePL, 'pl');
 
 @NgModule({
@@ -13,7 +15,8 @@ registerLocaleData(localePL, 'pl');
   ],
   imports: [
     BrowserModule,
-    StoreModule
+    StoreModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
