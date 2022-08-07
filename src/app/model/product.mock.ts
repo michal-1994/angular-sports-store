@@ -18,7 +18,6 @@ export class ProductData {
     }
 
     saveOrder(order: Order): Observable<Order> {
-        console.log(JSON.stringify(order));
         return from([order]);
     }
 
