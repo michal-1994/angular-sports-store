@@ -6,6 +6,10 @@ import { StoreModule } from './store/store.module';
 import { registerLocaleData } from '@angular/common';
 import localePL from '@angular/common/locales/pl';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { RouterModule } from '@angular/router';
+import { StoreComponent } from './store/store.component';
+import { CheckoutComponent } from './store/checkout.component';
+import { CartDetailComponent } from './store/cartDetail.component';
 
 registerLocaleData(localePL, 'pl');
 
@@ -16,7 +20,21 @@ registerLocaleData(localePL, 'pl');
   imports: [
     BrowserModule,
     StoreModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    RouterModule.forRoot([
+      {
+        path: 'store', component: StoreComponent
+      },
+      {
+        path: 'cart', component: CartDetailComponent
+      },
+      {
+        path: 'checkout', component: CheckoutComponent
+      },
+      {
+        path: '**', redirectTo: './store'
+      }
+    ])
   ],
   providers: [],
   bootstrap: [AppComponent]
