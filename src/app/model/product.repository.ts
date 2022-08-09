@@ -33,7 +33,15 @@ export class ProductRepository {
         return this.categories;
     }
 
-    saveProduct(id: number) {
+    saveProduct(product: Product) {
+        if (product.id == null || product.id == 0) {
+            this.restData.saveProduct(product).subscribe(p => this.products.push(p));
+        } else {
+            this.restData.updateProduct(product).subscribe(p => this.products.splice(this.products.findIndex(p => p.id == product.id), 1, product))
+        }
+    }
+
+    deleteProduct(id: number) {
         this.restData.deleteProduct(id).subscribe(p => {
             this.products.splice(this.products.findIndex(p => p.id == id), 1);
         })
