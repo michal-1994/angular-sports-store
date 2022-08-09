@@ -1,6 +1,7 @@
 import { Injectable } from "@angular/core";
 import { ProductData } from "./product.mock";
 import { Product } from "./product.model";
+import { RestData } from "./rest.data";
 
 @Injectable()
 export class ProductRepository {
@@ -8,7 +9,8 @@ export class ProductRepository {
     private categories: string[] = [];
 
     constructor(
-        private productData: ProductData
+        private productData: ProductData,
+        private restData: RestData
     ) {
         productData.getProducts().subscribe(data => {
             this.products = data;
@@ -29,6 +31,12 @@ export class ProductRepository {
 
     getCategories(): string[] {
         return this.categories;
+    }
+
+    saveProduct(id: number) {
+        this.restData.deleteProduct(id).subscribe(p => {
+            this.products.splice(this.products.findIndex(p => p.id == id), 1);
+        })
     }
 
 }
