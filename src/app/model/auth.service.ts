@@ -4,9 +4,7 @@ import { RestData } from "./rest.data";
 
 @Injectable()
 export class AuthService {
-    constructor(private restData: RestData) {
-
-    }
+    constructor(private restData: RestData) { }
 
     authenticate(username: string, password: string): Observable<boolean> {
         return this.restData.authenticate(username, password);

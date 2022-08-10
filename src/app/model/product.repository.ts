@@ -35,9 +35,13 @@ export class ProductRepository {
 
     saveProduct(product: Product) {
         if (product.id == null || product.id == 0) {
-            this.restData.saveProduct(product).subscribe(p => this.products.push(p));
+            this.restData.saveProduct(product)
+                .subscribe(p => this.products.push(p));
         } else {
-            this.restData.updateProduct(product).subscribe(p => this.products.splice(this.products.findIndex(p => p.id == product.id), 1, product))
+            this.restData.updateProduct(product)
+                .subscribe(p => this.products
+                    .splice(this.products.findIndex(p => p.id == product.id), 1, product)
+                )
         }
     }
 
