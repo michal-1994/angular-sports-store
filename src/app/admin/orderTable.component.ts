@@ -11,6 +11,7 @@ export class OrderTableComponent {
     constructor(private repository: OrderRepository) { }
 
     getOrders(): Order[] {
+        console.log(this.repository.getOrders());
         return this.repository.getOrders().filter(o => this.includeShipped || !o.shipped);
     }
 

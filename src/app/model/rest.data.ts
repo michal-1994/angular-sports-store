@@ -31,11 +31,11 @@ export class RestData {
         }).pipe(map(response => {
             this.auth_token = response.success ? response.token : null;
             return response.success;
-        }))
+        }));
     }
 
     saveProduct(product: Product): Observable<Product> {
-        return this.http.post<Product>(this.baseUrl + "products", product, this.getOptions());
+        return this.http.post<Product>(`${this.baseUrl}products`, product, this.getOptions());
     }
 
     updateProduct(product: Product): Observable<Product> {
@@ -47,7 +47,7 @@ export class RestData {
     }
 
     getOrders(): Observable<Order[]> {
-        return this.http.get<Order[]>(this.baseUrl + "orders", this.getOptions());
+        return this.http.get<Order[]>(`${this.baseUrl}orders`, this.getOptions());
     }
 
     deleteOrder(id: number): Observable<Order> {
@@ -60,7 +60,7 @@ export class RestData {
 
     private getOptions() {
         return {
-            headers: new HttpHeaders({ 'Authorization': `Bearer<${this.auth_token}`})
+            headers: new HttpHeaders({ 'Authorization': `Bearer<${this.auth_token}>` })
         }
     }
 }
