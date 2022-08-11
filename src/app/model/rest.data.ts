@@ -5,8 +5,8 @@ import { Product } from "./product.model";
 import { Order } from "./order.model";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 
-// const PROTOCOL = "http";
-// const PORT = "3500";
+const PROTOCOL = "http";
+const PORT = "3500";
 
 @Injectable()
 export class RestData {
